@@ -1,15 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HerramientasService } from 'src/app/services/herramientas/herramientas.service';
+import { UsuariosService } from 'src/app/services/usuarios/usuarios.service';
 
 @Component({
-  selector: 'app-inicio',
-  templateUrl: './inicio.component.html',
-  styleUrls: ['./inicio.component.css'],
+  selector: 'app-lista-usuarios',
+  templateUrl: './lista-usuarios.component.html',
+  styleUrls: ['./lista-usuarios.component.css']
 })
-export class InicioComponent implements OnInit {
-  //lista de herramientas
-  listaHerrmientas: any = {};
+export class ListaUsuariosComponent implements OnInit {
+
+  //lista de Usuarios
+  listaUsuarios: any = {};
 
   // Verificar Logeo
   verificadorBool: boolean = false;
@@ -18,17 +20,17 @@ export class InicioComponent implements OnInit {
   query: string = '';
 
   constructor(
-    private HerramientaService: HerramientasService,
+    private usuariosService: UsuariosService,
     private router: Router
   ) { }
 
   ngOnInit(): void {
-    this.verifyLooged();
-    this.getHerramientas();
+    // this.verifyLooged();
+    this.getUsuarios();
   }
 
   verifyLooged() {
-    if (localStorage.getItem('contrasena')) {
+    if (localStorage.getItem('token')) {
       this.verificadorBool = true;
     } else {
       this.verificadorBool = false;
@@ -37,19 +39,19 @@ export class InicioComponent implements OnInit {
 
   /*
    ************************************************
-   *              TRAER HERRAMIENTAS              *
+   *              OBTENER USUARIOS                *
    ************************************************
    */
-  getHerramientas() {
-    this.HerramientaService.obtenerHerramientas().subscribe({
+  getUsuarios() {
+    this.usuariosService.obtenerUsuarios().subscribe({
       next: (data) => {
         if (this.query) {
           // filtra los elementos de la lista según la consulta de búsqueda
-          this.listaHerrmientas = data.filter((element: any) =>
-            element.nombre.toLowerCase().includes(this.query.toLowerCase())
+          this.listaUsuarios = data.filter((element: any) =>
+            element.name.toLowerCase().includes(this.query.toLowerCase())
           );
         } else {
-          this.listaHerrmientas = data;
+          this.listaUsuarios = data;
         }
       },
       error: (err) => { },
@@ -57,7 +59,7 @@ export class InicioComponent implements OnInit {
   }
 
   borrarHerramienta(id: any) {
-    this.HerramientaService.eliminarHerramienta(id).subscribe({
+    this.usuariosService.eliminarUsuario(id).subscribe({
       next: (data) => {
         window.location.reload();
       },
@@ -73,10 +75,19 @@ export class InicioComponent implements OnInit {
   onSearch(value: string) {
     if (value && value.length > 3) {
       this.query = value; // actualiza la variable de consulta
-      this.getHerramientas(); // filtra la lista de herramientas
+      this.getUsuarios(); // filtra la lista de herramientas
     } else {
       this.query = '';
-      this.getHerramientas();
+      this.getUsuarios();
     }
+  }
+
+  /*
+  ************************************************
+  *              MOSTRAR DETALLES                *
+  ************************************************
+  */
+  mostrarDetalles(user: any) {
+    this.router.navigate(['/lista-detalles', user.id]);
   }
 }

@@ -1,0 +1,44 @@
+<app-header></app-header>
+
+<div class="d-flex justify-content-center" id="seccion-herramientas">
+    <nav class="navbar navbar-expand-lg">
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <form class="form-inline my-2 my-lg-0" >
+                        <div class="input-group mt-4">
+                            <input #inputSearch class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search"
+                                style="width: 600px;" (keyup)="onSearch(inputSearch.value)">
+                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+                        </div>
+                    </form>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="container mt-5">
+    <h2>Lista de Usuarios</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Correo Electronico</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let user of listaUsuarios">
+                <td>{{ user.name }}</td>
+                <td>{{ user.email }}</td>
+                <td><button class="btn btn-primary" (click)="mostrarDetalles(user)">Detalles</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
+
+
+<app-footer></app-footer>
