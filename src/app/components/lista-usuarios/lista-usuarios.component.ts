@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { HerramientasService } from 'src/app/services/herramientas/herramientas.service';
 import { UsuariosService } from 'src/app/services/usuarios/usuarios.service';
 
 @Component({
