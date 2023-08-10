@@ -8,7 +8,7 @@ export class ConfigurationService {
   private URL_WEB: string;
   constructor() {
     /* Configuración de url del servidor Api Rest */
-    this.URL_BASE = 'http://localhost:8080/api/';
+    this.URL_BASE = 'http://localhost:3000/';
     this.URL_WEB = 'http://backend.libreriasweb.test/';
   }
 

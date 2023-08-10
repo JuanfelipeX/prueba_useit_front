@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { RegistrarseService } from 'src/app/services/registrarse/registrarse.service';
+import { UsuariosService } from 'src/app/services/usuarios/usuarios.service';
 
 @Component({
   selector: 'app-iniciar-sesion',
@@ -10,49 +10,24 @@ import { RegistrarseService } from 'src/app/services/registrarse/registrarse.ser
 export class IniciarSesionComponent implements OnInit {
   formulario: any = {};
 
-  formularioUserByCorreo: any = [];
-
   constructor(
-    private registrarseService: RegistrarseService,
+    private usuarioService: UsuariosService,
     private router: Router
-  ) {}
+  ) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
-  getUsuarioByCorreo() {
-    this.registrarseService
-      .obtenerUsuariosCorreo(this.formulario.email)
+  iniciarSesion() {
+    this.usuarioService
+      .iniciarSesion(this.formulario)
       .subscribe({
         next: (data) => {
-          this.formularioUserByCorreo = data[0];
+          console.log(data);
         },
-        error: (err) => {},
+        error: (err) => { 
+          console.log(err);
+        },
       });
   }
 
-  iniciarSesion() {
-    this.getUsuarioByCorreo();
-
-    setTimeout(() => {
-      if (this.formularioUserByCorreo == undefined) {
-        console.log('NO paso');
-      } else if (
-        this.formulario.email == this.formularioUserByCorreo.email &&
-        this.formulario.contrasena == this.formularioUserByCorreo.contrasena
-      ) {
-        console.log('Paso');
-        localStorage.setItem(
-          'contrasena',
-          this.formularioUserByCorreo.contrasena
-        );
-        setTimeout(() => {
-          this.router.navigateByUrl('inicio');
-        }, 500);
-      } else if (
-        this.formulario.contrasena != this.formularioUserByCorreo.contrasena
-      ) {
-        console.log('Contrasena incorrecta');
-      }
-    }, 500);
-  }
 }
