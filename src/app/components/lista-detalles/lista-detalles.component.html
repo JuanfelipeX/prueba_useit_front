@@ -1,10 +1,22 @@
 <div class="container mt-5">
-    <h2>Detalles del Usuario</h2>
-    <p>ID del Usuario: {{ userId }}</p>
-    <div *ngIf="userDetalles">
-        <p><strong>Nombre:</strong> {{ userDetalles.name }}</p>
-        <p><strong>Email:</strong> {{ userDetalles.email }}</p>
-        <!-- Agregar más detalles del usuario aquí -->
+    <div class="card">
+        <div class="card-header">
+            <h2 class="mb-0">Detalles del Usuario</h2>
+        </div>
+        <div class="card-body">
+            <p><strong>ID del Usuario:</strong> {{ userId }}</p>
+            <div *ngIf="userDetalles">
+                <p><strong>Nombre:</strong> {{ userDetalles.name }}</p>
+                <p><strong>Email:</strong> {{ userDetalles.email }}</p>
+                <!-- Agregar más detalles del usuario aquí -->
+
+                <div class="mt-2">
+                    <strong>Imagen de Perfil:</strong>
+                    <br>
+                    <img src="{{ userDetalles.image }}" alt="Imagen de perfil" class="img-fluid rounded" style="max-width: 200px;">
+                </div>
+            </div>
+            <button class="btn btn-primary mt-3" (click)="goBack()">Volver</button>
+        </div>
     </div>
-    <button class="btn btn-primary mt-3" (click)="goBack()">Volver</button>
 </div>

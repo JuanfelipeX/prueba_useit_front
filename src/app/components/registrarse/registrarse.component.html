@@ -14,72 +14,21 @@
 
                     <form class="mx-1 mx-md-2">
 
-                        <div class="row">
-                            <div class="col-md-6 mb-2">
-                                <!-- Input Nombre -->
-                                <div class="d-flex flex-row align-items-center mb-2">
-                                    <div class="form-outline flex-fill mb-0">
-                                        <label class="form-label">Nombres</label>
-                                        <input type="text" class="form-control" [(ngModel)]="formulario.nombres"
-                                            name="nombres" required />
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div class="col-md-6 mb-2">
-                                <!-- Input Apellido -->
-                                <div class="d-flex flex-row align-items-center mb-2">
-                                    <div class="form-outline flex-fill mb-0">
-                                        <label class="form-label">Apellidos</label>
-                                        <input type="text" id="input-apellidos" class="form-control"
-                                            [(ngModel)]="formulario.apellidos" name="apellidos" required />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Input Alias -->
+                        <!-- Input Nombre -->
                         <div class="d-flex flex-row align-items-center mb-4">
                             <div class="form-outline flex-fill mb-0">
-                                <label class="form-label">Alias</label>
-                                <input type="text" id="input-alias" class="form-control" [(ngModel)]="formulario.alias"
-                                    name="alias" required />
+                                <label class="form-label">Nombre</label>
+                                <input type="text" id="input-name" class="form-control" [(ngModel)]="formulario.name"
+                                    name="name" required />
                             </div>
                         </div>
 
-                        <div class="row">
-                            <div class="col-md-6 mb-2">
-                                <!-- Input Genero -->
-                                <label class="form-label">Genero</label>
-                                <div class="d-flex flex-row align-items-center mb-2">
-                                    <div class="form-outline flex-fill mb-0">
-                                        <select id="input-genero" [(ngModel)]="formulario.genero" name="genero"
-                                            class="block w-full py-1 px-lg-5 sm:text-sm form-control">
-                                            <option value='hombre'>Hombre</option>
-                                            <option value='mujer'>Mujer</option>
-                                            <option value='otro'>Otro</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6 mb-2">
-                                <!-- Input Telefono -->
-                                <div class="d-flex flex-row align-items-center mb-2">
-                                    <div class="form-outline flex-fill mb-0">
-                                        <label class="form-label">Teléfono</label>
-                                        <input type="phone" id="input-telefono" class="form-control"
-                                            [(ngModel)]="formulario.telefono" name="telefono" required />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Input Pais -->
-                        <div class="d-flex flex-row align-items-center mb-4">
+                          <!-- Input Imagen -->
+                          <div class="d-flex flex-row align-items-center mb-4">
                             <div class="form-outline flex-fill mb-0">
-                                <label class="form-label">Pais</label>
-                                <input type="text" id="input-pais" class="form-control" [(ngModel)]="formulario.pais"
-                                    name="pais" required />
+                                <label class="form-label">Link de la Imagen</label>
+                                <input type="text" id="input-image" class="form-control" [(ngModel)]="formulario.image"
+                                    name="image" required />
                             </div>
                         </div>
 
@@ -96,8 +45,8 @@
                         <div class="d-flex flex-row align-items-center mb-4">
                             <div class="form-outline flex-fill mb-0">
                                 <label class="form-label">Contraseña</label>
-                                <input type="password" id="input-contrasena" class="form-control"
-                                    [(ngModel)]="formulario.contrasena" name="contrasena" required />
+                                <input type="password" id="input-password" class="form-control"
+                                    [(ngModel)]="formulario.password" name="password" required />
                             </div>
                         </div>
 

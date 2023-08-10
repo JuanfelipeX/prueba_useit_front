@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { RegistrarseService } from 'src/app/services/registrarse/registrarse.service';
+import { UsuariosService } from 'src/app/services/usuarios/usuarios.service';
 
 @Component({
   selector: 'app-registrarse',
@@ -9,9 +11,9 @@ import { RegistrarseService } from 'src/app/services/registrarse/registrarse.ser
 export class RegistrarseComponent implements OnInit {
   formulario: any = {};
 
-  constructor(private registrarseService: RegistrarseService) {}
+  constructor(private router: Router, private usuarioService: UsuariosService) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   /*
    ************************************************
@@ -19,9 +21,13 @@ export class RegistrarseComponent implements OnInit {
    ************************************************
    */
   registrase() {
-    this.registrarseService.crearUsuarios(this.formulario).subscribe({
-      next: (data) => {},
-      error: (err) => {},
+    this.usuarioService.crearUsuario(this.formulario).subscribe({
+      next: (data) => {
+        this.router.navigate(['/lista-usuarios']);
+      },
+      error: (err) => {
+        console.log(err);
+      },
     });
   }
 }

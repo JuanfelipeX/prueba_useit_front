@@ -18,24 +18,28 @@
     </nav>
 </div>
 
-<div class="container mt-5">
-    <h2>Lista de Usuarios</h2>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Nombre</th>
-                <th>Correo Electronico</th>
-                <th>Acciones</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let user of listaUsuarios">
-                <td>{{ user.name }}</td>
-                <td>{{ user.email }}</td>
-                <td><button class="btn btn-primary" (click)="mostrarDetalles(user)">Detalles</button></td>
-            </tr>
-        </tbody>
-    </table>
+<div class="container mt-4">
+    <h2 class="mb-4 text-center">Lista de Usuarios</h2>
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+            <thead class="table-primary">
+                <tr>
+                    <th>Nombre</th>
+                    <th>Correo Electrónico</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let user of listaUsuarios">
+                    <td>{{ user.name }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>
+                        <button class="btn btn-primary btn-sm" (click)="mostrarDetalles(user)">Detalles</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
 
 
