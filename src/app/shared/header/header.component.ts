@@ -16,14 +16,14 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {}
 
   verifyLooged() {
-    if (localStorage.getItem('contrasena')) {
+    if (localStorage.getItem('token')) {
       this.verificadorBool = true;
     } else {
       this.verificadorBool = false;
     }
   }
   borrarContra() {
-    localStorage.removeItem('contrasena');
+    localStorage.removeItem('token');
     this.verificadorBool = false;
     location.reload();
   }

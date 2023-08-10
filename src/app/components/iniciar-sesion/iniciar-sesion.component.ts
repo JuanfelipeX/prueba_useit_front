@@ -9,6 +9,8 @@ import { UsuariosService } from 'src/app/services/usuarios/usuarios.service';
 })
 export class IniciarSesionComponent implements OnInit {
   formulario: any = {};
+  token: any;
+
 
   constructor(
     private usuarioService: UsuariosService,
@@ -22,9 +24,15 @@ export class IniciarSesionComponent implements OnInit {
       .iniciarSesion(this.formulario)
       .subscribe({
         next: (data) => {
-          console.log(data);
+          this.token = (data as any).token;
+          localStorage.setItem(
+            'token', this.token
+          );
+          setTimeout(() => {
+            this.router.navigateByUrl('lista-usuarios');
+          }, 500);
         },
-        error: (err) => { 
+        error: (err) => {
           console.log(err);
         },
       });

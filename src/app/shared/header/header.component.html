@@ -4,10 +4,8 @@
         <div class="collapse navbar-collapse mx-4" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active mx-2" aria-current="page" [href]="'http://localhost:4200/inicio'">Inicio</a>
-                </li>
-                <li class="nav-item" *ngIf="verificadorBool">
-                    <a class="nav-link mx-2" [href]="'http://localhost:4200/herramienta'">Registrar Herramienta</a>
+                    <a class="nav-link active mx-2" aria-current="page"
+                        [href]="'http://localhost:4200/lista-usuarios'">Inicio</a>
                 </li>
             </ul>
 
@@ -20,8 +18,8 @@
                         style="text-decoration: none;">Iniciar Sesion</a>
                 </button>
 
-                <button class="btn btn-outline-primary me-3" id="buttonRegistrarse"> <a [href]="'http://localhost:4200/registrarse'"
-                        style="text-decoration: none;">Registrarse</a>
+                <button class="btn btn-outline-primary me-3" id="buttonRegistrarse"> <a
+                        [href]="'http://localhost:4200/registrarse'" style="text-decoration: none;">Registrarse</a>
                 </button>
             </form>
         </div>
